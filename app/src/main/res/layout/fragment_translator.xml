@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".translator.TranslatorFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="ML Kit"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/leftSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp" />
+
+        <ImageButton
+            android:id="@+id/ibSwitch"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Swap languages"
+            android:src="@drawable/baseline_swap_horiz_24" />
+
+        <Spinner
+            android:id="@+id/rightSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/flImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <EditText
+                android:id="@+id/etInputText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="start|top"
+                android:hint="Type the text to translate"
+                android:padding="8dp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTranslatedText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="start|top"
+                android:hint="Translated text ..."
+                android:padding="8dp"
+                android:textIsSelectable="true"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:visibility="gone"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/etInputText" />
+
+            <ImageView
+                android:id="@+id/ivSpeaker"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/baseline_volume_up_24"
+                android:layout_margin="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvTranslatedText"
+                app:layout_constraintTop_toTopOf="@+id/tvTranslatedText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/flImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#86B6F6"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="16dp"
+            app:layout_constraintBottom_toTopOf="@id/flCamera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Select image"
+                android:src="@drawable/baseline_image_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/flCamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#596FB7"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Capture image"
+                android:src="@drawable/baseline_photo_camera_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Study Camera"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
